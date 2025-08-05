@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday My Love</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    .image-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 50px auto;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 2s ease-in-out;
+    }
+    #message {
+      opacity: 0;
+      transition: opacity 2s ease-in;
+      font-size: 2em;
+      color: #ff69b4;
+      margin-top: 30px;
+    }
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg" id="img1">
+    <img src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg" id="img2">
+    <img src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1599.jpg" id="img3">
+  </div>
+  <div id="message">hello em iu</div>
+
+  <script>
+    const images = ["img1", "img2", "img3"];
+    let index = 0;
+
+    function showImage(i) {
+      if (i > 0) document.getElementById(images[i - 1]).style.opacity = 0;
+      document.getElementById(images[i]).style.opacity = 1;
+    }
+
+    function startSlideshow() {
+      showImage(index);
+      index++;
+      if (index < images.length) {
+        setTimeout(() => startSlideshow(), 4000);
+      } else {
+        setTimeout(() => {
+          document.getElementById("message").style.opacity = 1;
+        }, 4000);
+      }
+    }
+
+    window.onload = () => {
+      startSlideshow();
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = Math.random() * window.innerHeight + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+      }
+    };
+  </script>
+</body>
+</html>
