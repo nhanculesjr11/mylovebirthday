@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 50px;
+    }
+    .title-container {
+      margin-top: 30px;
+      padding: 0 15px;
+    }
+    #birthdayTitle {
+      font-size: 2.5em;
+      color: #fff;
+      background-color: #ff69b4;
+      padding: 10px;
+      border-radius: 10px;
+      animation: fadeIn 2s ease forwards;
+    }
+    #nameTitle {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.8em;
+      color: #ff69b4;
+      margin-top: 10px;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 2s;
+    }
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      padding: 0 10px;
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards;
+      animation-delay: 3s;
+    }
+    .image-container img {
+      width: 90%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+    #message {
+      font-size: 1.2em;
+      color: #ff69b4;
+      margin-top: 30px;
+      padding: 20px;
+      text-align: center;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .heart {
+      width: 20px;
+      height: 20px;
+      position: fixed;
+      bottom: 0;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="title-container">
+    <div id="birthdayTitle">Happy Birthday</div>
+    <div id="nameTitle">Ngọc Thanh</div>
+  </div>
+  <div class="image-container">
+    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg"/>
+    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg"/>
+    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1599.jpg"/>
+  </div>
+  <div id="message"></div>
+
+  <script>
+    const fullMessage = `Hellu em iu! Đây là lần đầu tiên anh được đón sinh nhật cùng em. Anh rất vui vì chúng mình đã đồng hành cùng nhau, đã cho nhau cơ hội yêu và được yêu, tụi mình chính thức yêu cũng được 1 tháng rồi ha. Anh cảm ơn em iu đã đến bên cạnh anh, ở lại với anh suốt thời gian vừa qua. Anh mong rằng tụi mình sẽ luôn cùng nhau làm tất cả mọi thứ trên đời này, hãy nắm chặt tay nhau dù có chuyện gì xảy ra đi chăng nữa nha em. Anh sẽ luôn ở bên chăm sóc và bảo vệ em. Cuối cùng anh chúc người yêu anh tuổi mới luôn tràn đầy năng lượng, nhiều sức khỏe, luôn luôn đáng yêu xinh đẹp, gặt hái được nhiều thành công và yêu anh nhiều nhiều hơn nữa nha.<br><br>^.^<br><br>Anh yêu em nhiều lắmmmmmmmm!<br><br>Chúc mừng sinh nhật em iu của anh <3<br><br>- 11.08.2025 -`;
+
+    const messageDiv = document.getElementById("message");
+    const words = fullMessage.split(/(\s+|<br>)/g);
+
+    let index = 0;
+    function typeWordByWord() {
+      if (index < words.length) {
+        if (words[index] === "<br>") {
+          messageDiv.innerHTML += "<br>";
+        } else {
+          messageDiv.innerHTML += words[index];
+        }
+        index++;
+        setTimeout(typeWordByWord, 75);
+      }
+    }
+
+    setTimeout(typeWordByWord, 3000);
+  </script>
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
