@@ -32,27 +32,47 @@
       animation: fadeIn 2s ease forwards;
       animation-delay: 2s;
     }
-    .image-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-      padding: 0 10px;
-      opacity: 0;
+
+    /* Circle container for images */
+    .circle-container {
+      position: relative;
+      width: 320px; /* slightly bigger */
+      height: 320px;
+      margin: 40px auto 0;
+      border-radius: 50%;
       animation: fadeInUp 2s ease forwards;
       animation-delay: 3s;
+      opacity: 0;
     }
-    .image-container img {
-      width: 90%;
-      max-width: 300px;
-      border-radius: 10px;
+    .circle-container img {
+      position: absolute;
+      width: 140px; /* reduced size for spacing */
+      height: 140px;
+      border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
-    .image-container img:hover {
+    .circle-container img:hover {
       transform: scale(1.05);
     }
+    /* Positioning images in a circle with gaps */
+    .circle-container img:nth-child(1) {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    .circle-container img:nth-child(2) {
+      top: 68%; /* moved slightly down */
+      left: 5%; /* pushed outward */
+      transform: translate(0, -50%);
+    }
+    .circle-container img:nth-child(3) {
+      top: 68%;
+      right: 5%;
+      transform: translate(0, -50%);
+    }
+
     #message {
       font-size: 1.2em;
       color: #ff69b4;
@@ -116,11 +136,14 @@
     <div id="birthdayTitle">Happy Birthday</div>
     <div id="nameTitle">Ngọc Thanh</div>
   </div>
-  <div class="image-container">
+
+  <!-- Images in a circle -->
+  <div class="circle-container">
     <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg"/>
     <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg"/>
     <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1599.jpg"/>
   </div>
+
   <div id="message"></div>
 
   <script>
@@ -138,7 +161,7 @@
           messageDiv.innerHTML += words[index];
         }
         index++;
-        setTimeout(typeWordByWord, 75);
+        setTimeout(typeWordByWord, 50);
       }
     }
 
