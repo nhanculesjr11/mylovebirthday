@@ -33,41 +33,44 @@
       animation-delay: 2s;
     }
 
-    /* Circle arrangement */
+    /* Circle container for images */
     .circle-container {
       position: relative;
-      width: 300px;
-      height: 300px;
-      margin: 40px auto;
+      width: 320px; /* slightly bigger */
+      height: 320px;
+      margin: 40px auto 0;
       border-radius: 50%;
+      animation: fadeInUp 2s ease forwards;
+      animation-delay: 3s;
+      opacity: 0;
     }
     .circle-container img {
-      width: 150px;
-      height: 150px;
-      border-radius: 15px;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       position: absolute;
+      width: 140px; /* reduced size for spacing */
+      height: 140px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
     .circle-container img:hover {
       transform: scale(1.05);
     }
-    /* Positions with a bit of space between */
+    /* Positioning images in a circle with gaps */
     .circle-container img:nth-child(1) {
       top: 0;
       left: 50%;
       transform: translate(-50%, 0);
     }
     .circle-container img:nth-child(2) {
-      bottom: 10px;
-      left: 0;
-      transform: translate(0, 0);
+      top: 68%; /* moved slightly down */
+      left: 5%; /* pushed outward */
+      transform: translate(0, -50%);
     }
     .circle-container img:nth-child(3) {
-      bottom: 10px;
-      right: 0;
-      transform: translate(0, 0);
+      top: 68%;
+      right: 5%;
+      transform: translate(0, -50%);
     }
 
     #message {
@@ -83,6 +86,10 @@
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .heart {
@@ -130,7 +137,7 @@
     <div id="nameTitle">Ngọc Thanh</div>
   </div>
 
-  <!-- Circle image arrangement -->
+  <!-- Images in a circle -->
   <div class="circle-container">
     <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg"/>
     <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg"/>
@@ -157,6 +164,7 @@
         setTimeout(typeWordByWord, 75);
       }
     }
+
     setTimeout(typeWordByWord, 3000);
   </script>
   <script>
