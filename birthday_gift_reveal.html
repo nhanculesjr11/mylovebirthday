@@ -32,7 +32,9 @@
       animation: fadeIn 2s ease forwards;
       animation-delay: 2s;
     }
-    .image-circle {
+
+    /* Circle container for images */
+    .circle-container {
       position: relative;
       width: 300px;
       height: 300px;
@@ -42,24 +44,34 @@
       animation-delay: 3s;
       opacity: 0;
     }
-    .image-circle img {
-      width: 100px;
-      height: 100px;
-      border-radius: 15px;
-      object-fit: cover;
+    .circle-container img {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      object-fit: cover;
       transition: transform 0.3s ease;
     }
-    .image-circle img:hover {
-      transform: translate(-50%, -50%) scale(1.05);
+    .circle-container img:hover {
+      transform: scale(1.05);
     }
-    .image1 { transform: translate(-50%, -50%) rotate(0deg) translate(120px) rotate(0deg); }
-    .image2 { transform: translate(-50%, -50%) rotate(120deg) translate(120px) rotate(-120deg); }
-    .image3 { transform: translate(-50%, -50%) rotate(240deg) translate(120px) rotate(-240deg); }
+    /* Positioning images in a circle */
+    .circle-container img:nth-child(1) {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    .circle-container img:nth-child(2) {
+      top: 65%;
+      left: 0;
+      transform: translate(0, -50%);
+    }
+    .circle-container img:nth-child(3) {
+      top: 65%;
+      right: 0;
+      transform: translate(0, -50%);
+    }
 
     #message {
       font-size: 1.2em;
@@ -99,11 +111,23 @@
       position: absolute;
       border-radius: 50%;
     }
-    .heart::before { top: -10px; left: 0; }
-    .heart::after { left: -10px; top: 0; }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
     @keyframes floatUp {
-      0% { transform: translateY(0) rotate(45deg); opacity: 0.6; }
-      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -112,11 +136,14 @@
     <div id="birthdayTitle">Happy Birthday</div>
     <div id="nameTitle">Ngọc Thanh</div>
   </div>
-  <div class="image-circle">
-    <img class="image1" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg" alt="Image 1">
-    <img class="image2" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg" alt="Image 2">
-    <img class="image3" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1599.jpg" alt="Image 3">
+
+  <!-- Images in a circle -->
+  <div class="circle-container">
+    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg"/>
+    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg"/>
+    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1599.jpg"/>
   </div>
+
   <div id="message"></div>
 
   <script>
@@ -137,6 +164,7 @@
         setTimeout(typeWordByWord, 75);
       }
     }
+
     setTimeout(typeWordByWord, 3000);
   </script>
   <script>
