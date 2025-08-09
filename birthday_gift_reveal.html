@@ -32,28 +32,35 @@
       animation: fadeIn 2s ease forwards;
       animation-delay: 2s;
     }
-    .image-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      justify-items: center;
-      margin-top: 30px;
-      padding: 0 10px;
-      opacity: 0;
+    .image-circle {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 40px auto 0;
+      border-radius: 50%;
       animation: fadeInUp 2s ease forwards;
       animation-delay: 3s;
+      opacity: 0;
     }
-    .image-container img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+    .image-circle img {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      object-fit: cover;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
-      object-fit: cover;
     }
-    .image-container img:hover {
-      transform: scale(1.05);
+    .image-circle img:hover {
+      transform: translate(-50%, -50%) scale(1.05);
     }
+    .image1 { transform: translate(-50%, -50%) rotate(0deg) translate(120px) rotate(0deg); }
+    .image2 { transform: translate(-50%, -50%) rotate(120deg) translate(120px) rotate(-120deg); }
+    .image3 { transform: translate(-50%, -50%) rotate(240deg) translate(120px) rotate(-240deg); }
+
     #message {
       font-size: 1.2em;
       color: #ff69b4;
@@ -92,23 +99,11 @@
       position: absolute;
       border-radius: 50%;
     }
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(45deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.6; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
     }
   </style>
 </head>
@@ -117,10 +112,10 @@
     <div id="birthdayTitle">Happy Birthday</div>
     <div id="nameTitle">Ngọc Thanh</div>
   </div>
-  <div class="image-container">
-    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg"/>
-    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg"/>
-    <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1599.jpg"/>
+  <div class="image-circle">
+    <img class="image1" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg" alt="Image 1">
+    <img class="image2" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg" alt="Image 2">
+    <img class="image3" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1599.jpg" alt="Image 3">
   </div>
   <div id="message"></div>
 
@@ -142,7 +137,6 @@
         setTimeout(typeWordByWord, 75);
       }
     }
-
     setTimeout(typeWordByWord, 3000);
   </script>
   <script>
