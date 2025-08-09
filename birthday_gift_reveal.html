@@ -2,47 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Open Your Birthday Gift!</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background-color: #fff0f5;
-      padding: 50px;
-    }
-
-    #gift-box {
-      width: 200px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    #gift-box:hover {
-      transform: scale(1.1);
-    }
-
-    #content {
-      display: none;
-      opacity: 0;
-      transition: opacity 1s ease;
-      margin-top: 30px;
-    }
-
-    #content.show {
-      display: block;
-      opacity: 1;
-    }
-  </style>
-</head>
-<body>
-
-  <img id="gift-box" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/happybirthday.gif" alt="Gift Box" onclick="openGift()">
-
-  <div id="content">
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday!</title>
   <style>
@@ -74,10 +33,10 @@
       animation-delay: 2s;
     }
     .image-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 15px;
+      justify-items: center;
       margin-top: 30px;
       padding: 0 10px;
       opacity: 0;
@@ -85,11 +44,12 @@
       animation-delay: 3s;
     }
     .image-container img {
-      width: 90%;
-      max-width: 300px;
-      border-radius: 10px;
+      width: 150px;
+      height: auto;
+      border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
+      object-fit: cover;
     }
     .image-container img:hover {
       transform: scale(1.05);
@@ -196,17 +156,5 @@
     }
     setInterval(createHeart, 500);
   </script>
-</body>
-</html>
-
-  </div>
-
-  <script>
-    function openGift() {
-      document.getElementById('content').classList.add('show');
-      document.getElementById('gift-box').style.display = 'none';
-    }
-  </script>
-
 </body>
 </html>
