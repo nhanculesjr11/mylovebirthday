@@ -33,42 +33,41 @@
       animation-delay: 2s;
     }
 
-    /* Perfectly spaced circle container */
+    /* Circle arrangement */
     .circle-container {
       position: relative;
-      width: 320px;
-      height: 320px;
-      margin: 40px auto 0;
+      width: 300px;
+      height: 300px;
+      margin: 40px auto;
       border-radius: 50%;
-      animation: fadeInUp 2s ease forwards;
-      animation-delay: 3s;
-      opacity: 0;
     }
     .circle-container img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: absolute;
       transition: transform 0.3s ease;
-      transform-origin: 0 -120px; /* distance from center for spacing */
     }
     .circle-container img:hover {
-      transform: scale(1.05) rotate(0deg) !important;
+      transform: scale(1.05);
     }
-
-    /* Position images evenly using rotation */
+    /* Positions with a bit of space between */
     .circle-container img:nth-child(1) {
-      transform: rotate(0deg) translate(-50%, -50%) rotate(0deg);
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
     }
     .circle-container img:nth-child(2) {
-      transform: rotate(120deg) translate(-50%, -50%) rotate(-120deg);
+      bottom: 10px;
+      left: 0;
+      transform: translate(0, 0);
     }
     .circle-container img:nth-child(3) {
-      transform: rotate(240deg) translate(-50%, -50%) rotate(-240deg);
+      bottom: 10px;
+      right: 0;
+      transform: translate(0, 0);
     }
 
     #message {
@@ -84,10 +83,6 @@
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .heart {
@@ -135,7 +130,7 @@
     <div id="nameTitle">Ngọc Thanh</div>
   </div>
 
-  <!-- Images in perfect circle -->
+  <!-- Circle image arrangement -->
   <div class="circle-container">
     <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1597.jpg"/>
     <img alt="Image" src="https://raw.githubusercontent.com/nhanculesjr11/mylovebirthday/main/IMG_1598.jpg"/>
@@ -162,7 +157,6 @@
         setTimeout(typeWordByWord, 75);
       }
     }
-
     setTimeout(typeWordByWord, 3000);
   </script>
   <script>
