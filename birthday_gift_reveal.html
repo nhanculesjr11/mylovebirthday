@@ -36,8 +36,8 @@
     /* Circle container for images */
     .circle-container {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 320px; /* slightly bigger */
+      height: 320px;
       margin: 40px auto 0;
       border-radius: 50%;
       animation: fadeInUp 2s ease forwards;
@@ -46,8 +46,8 @@
     }
     .circle-container img {
       position: absolute;
-      width: 150px;
-      height: 150px;
+      width: 140px; /* reduced size for spacing */
+      height: 140px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       object-fit: cover;
@@ -56,20 +56,20 @@
     .circle-container img:hover {
       transform: scale(1.05);
     }
-    /* Positioning images in a circle */
+    /* Positioning images in a circle with gaps */
     .circle-container img:nth-child(1) {
       top: 0;
       left: 50%;
       transform: translate(-50%, 0);
     }
     .circle-container img:nth-child(2) {
-      top: 65%;
-      left: 0;
+      top: 68%; /* moved slightly down */
+      left: 5%; /* pushed outward */
       transform: translate(0, -50%);
     }
     .circle-container img:nth-child(3) {
-      top: 65%;
-      right: 0;
+      top: 68%;
+      right: 5%;
       transform: translate(0, -50%);
     }
 
